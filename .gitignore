@@ -1,0 +1,11 @@
+.idea/
+Casino-Strategy/bin/
+Casino-Strategy/gen/
+Casino-Strategy/out/production/CasinoStrategy/com/
+Casino-Strategy/local.properties
+Casino-Strategy/project.properties
+bin/
+gen/
+out/production/CasinoStrategy/com/
+local.properties
+project.properties

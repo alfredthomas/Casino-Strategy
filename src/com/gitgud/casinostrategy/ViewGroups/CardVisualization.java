@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.text.style.LineHeightSpan;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -17,6 +18,7 @@ import com.gitgud.casinostrategy.R;
  */
 public class CardVisualization extends View {
     Card card;
+    Boolean hold = false;
     Paint paint = new Paint();
     public CardVisualization(Context context){
         super(context);
@@ -40,14 +42,15 @@ public class CardVisualization extends View {
         super.onDraw(canvas);
         float density = getResources().getDisplayMetrics().density;
         float padding = 7f *density;
-        if (card == null)
-            return;
-        paint.setTextSize(50*density);
         int x = getWidth();
         int y = getHeight();
-        paint.setStyle(Paint.Style.FILL);
-        paint.setColor(Color.WHITE);
-        canvas.drawPaint(paint);
+        float textSize = .1f * x *density;
+
+
+        if (card == null)
+            return;
+        paint.setTextSize(textSize);
+
 
         //draw card rank in top left and bottom right
         paint.setTextAlign(Paint.Align.LEFT);
@@ -62,7 +65,6 @@ public class CardVisualization extends View {
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setColor(card.getSuitColor());
         canvas.drawText(card.getSuitString(),(canvas.getWidth()/2),(canvas.getHeight()/2)+(paint.getTextSize()/2),paint);
-
     }
 
     public void setCard(Card card){
