@@ -38,9 +38,11 @@ public class CardVisualization extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        float density = getResources().getDisplayMetrics().density;
+        float padding = 7f *density;
         if (card == null)
             return;
-        paint.setTextSize(100);
+        paint.setTextSize(50*density);
         int x = getWidth();
         int y = getHeight();
         paint.setStyle(Paint.Style.FILL);
@@ -50,25 +52,17 @@ public class CardVisualization extends View {
         //draw card rank in top left and bottom right
         paint.setTextAlign(Paint.Align.LEFT);
         paint.setColor(Color.BLACK);
-        canvas.drawText(card.getRankString(), 0, 0 + paint.getTextSize(), paint);
+        canvas.drawText(card.getRankString(), +padding , 0 + paint.getTextSize()+padding, paint);
 
         paint.setTextAlign(Paint.Align.RIGHT);
-        canvas.drawText(card.getRankString(), canvas.getWidth() - paint.measureText(card.getRankString()), canvas.getHeight(), paint);
+        canvas.drawText(card.getRankString(), canvas.getWidth() - padding, canvas.getHeight()-2*padding, paint);
 
 
-
+        //suit symbol in proper color
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setColor(card.getSuitColor());
-        canvas.drawText(card.getSuitString(),(canvas.getWidth()/2)-(paint.measureText(card.getSuitString())/2),(canvas.getHeight()/2)+(paint.getTextSize()/2),paint);
+        canvas.drawText(card.getSuitString(),(canvas.getWidth()/2),(canvas.getHeight()/2)+(paint.getTextSize()/2),paint);
 
-
-
-
-//        // Use Color.parseColor to define HTML colors
-//        paint.setColor(Color.parseColor("#CD5C5C"));
-//        canvas.drawCircle(x / 2, y / 2, radius, paint);
-
-        //draw suit in proper color
     }
 
     public void setCard(Card card){
