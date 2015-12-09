@@ -19,7 +19,7 @@ public class Deck {
         for(Suit suit: Suit.values()){
             for (Rank rank: Rank.values()){
                 //only allow jokers if requested and only for Spades and Hearts
-                if (rank == Rank.Joker && jokers && (suit==Suit.Clubs||suit == Suit.Diamonds))
+                if (rank == Rank.Joker && (!jokers || (suit==Suit.Clubs||suit == Suit.Diamonds)))
                     continue;
                 deck.add(new Card(suit,rank));
             }
