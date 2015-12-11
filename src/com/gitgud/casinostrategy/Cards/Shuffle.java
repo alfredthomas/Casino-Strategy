@@ -22,6 +22,10 @@ public class Shuffle {
         //disperse remaining cards into top middle and bottom of deck accordingly
         //break into 6 piles and take a little off the tops of 3 piles and shuffle with the same from the other three piles
         //shuffle until shoe is finished and then repeat entire process again
+
+
+        //get discard pile
+        int discardIndex = shoe.cardPointer;
         return shoe.shoe;
     }
     public static ArrayList<Card> automaticShuffle(Shoe shoe){

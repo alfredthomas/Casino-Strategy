@@ -6,8 +6,11 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.GradientDrawable;
 import android.view.View;
+import com.gitgud.casinostrategy.Cards.Card;
 import com.gitgud.casinostrategy.Cards.Deck;
 import com.gitgud.casinostrategy.Cards.Shoe;
+
+import java.util.ArrayList;
 
 /**
  * Created by AJ on 12/7/2015.
@@ -15,13 +18,16 @@ import com.gitgud.casinostrategy.Cards.Shoe;
 public class Hand extends ImprovedViewGroup {
     int handSize;
     Shoe shoe;
+    ArrayList<Card> currentCards;
     public Hand(Context context, Shoe shoe, int handSize){
         super(context);
         this.handSize = handSize;
         this.shoe = shoe;
+        this.currentCards = new ArrayList<>(handSize);
         for (int i = 0; i<handSize; i++){
             CardVisualization cv = new CardVisualization(context);
-            cv.setCard(shoe.DealCard());
+            Card newCard = shoe.DealCard();
+            cv.setCard(newCard);
             cv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -54,7 +60,7 @@ public class Hand extends ImprovedViewGroup {
 
             cv.setBackground(gd);
             this.addView(cv);
-
+            this.currentCards.add(i,newCard);
         }
 
     }
@@ -88,8 +94,12 @@ public class Hand extends ImprovedViewGroup {
 
             if (cv.hold == true)
                 continue;
-
-            cv.setCard(shoe.DealCard());
+            Card newCard = shoe.DealCard();
+            cv.setCard(newCard);
+            this.currentCards.set(i,newCard);
         }
+    }
+    public ArrayList<Card> getCurrentCards(){
+        return currentCards;
     }
 }
