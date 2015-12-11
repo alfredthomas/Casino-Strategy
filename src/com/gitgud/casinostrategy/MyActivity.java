@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.gitgud.casinostrategy.Cards.Shoe;
 import com.gitgud.casinostrategy.ViewGroups.CardVisualization;
+import com.gitgud.casinostrategy.ViewGroups.Dashboard;
 import com.gitgud.casinostrategy.ViewGroups.ImprovedViewGroup;
 import com.gitgud.casinostrategy.ViewGroups.Hand;
 
@@ -29,9 +30,9 @@ public class MyActivity extends Activity {
 //        });
 //        cv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 //        this.setContentView(cv);
-        Hand pokerHand = new Hand(this,singleShoe,5);
+        Dashboard dashboard = new Dashboard(this,singleShoe,5);
 
-        this.setContentView(pokerHand);
+        this.setContentView(dashboard);
 
     }
 }

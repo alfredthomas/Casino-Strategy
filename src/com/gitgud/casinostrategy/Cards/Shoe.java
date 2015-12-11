@@ -7,9 +7,7 @@ import java.util.ArrayList;
  */
 public class Shoe {
     int cardPointer;
-    public enum shuffleMethod{
-        Hand, Automatic, Random
-    }
+
     public ArrayList<Card> shoe;
     public Shoe(int decks){
         this(decks,false);
@@ -22,6 +20,9 @@ public class Shoe {
         }
         this.cardPointer= 0;
     }
+    public void replaceShoe(ArrayList<Card> newShoe){
+        this.shoe = newShoe;
+    }
     public Card DealCard(){
         if (cardPointer >= this.shoe.size()){
             //shuffle
@@ -33,6 +34,4 @@ public class Shoe {
         this.cardPointer++;
         return toDeal;
     }
-
-
 }

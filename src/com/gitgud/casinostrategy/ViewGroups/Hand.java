@@ -19,7 +19,6 @@ public class Hand extends ImprovedViewGroup {
         super(context);
         this.handSize = handSize;
         this.shoe = shoe;
-        this.setBackgroundColor(Color.rgb(0,153,0));
         for (int i = 0; i<handSize; i++){
             CardVisualization cv = new CardVisualization(context);
             cv.setCard(shoe.DealCard());
