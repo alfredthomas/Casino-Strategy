@@ -19,7 +19,7 @@ public class MyActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Shoe singleShoe = new Shoe(1,true);
+        Shoe singleShoe = new Shoe(1,false);
 //        CardVisualization cv = new CardVisualization(this);
 //        cv.setCard(singleShoe.DealCard());
 //        cv.setOnClickListener(new View.OnClickListener() {

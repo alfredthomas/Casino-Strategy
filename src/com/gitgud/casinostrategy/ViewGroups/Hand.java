@@ -32,18 +32,11 @@ public class Hand extends ImprovedViewGroup {
                 @Override
                 public void onClick(View v) {
                     cv.hold = !cv.hold;
-                    GradientDrawable gd = (GradientDrawable) cv.getBackground();
-                    if (cv.hold){
-                        gd.setColor(Color.CYAN);
-                        gd.setCornerRadius(8);
-                        gd.setStroke(3, Color.BLACK);
-                    }
-                    else{
-                        gd.setColor(Color.WHITE);
-                        gd.setCornerRadius(8);
-                        gd.setStroke(3, Color.BLACK);
-                    }
-
+                    GradientDrawable gd = (GradientDrawable)cv.getBackground();
+                    gd.setColor(cv.hold?Color.CYAN:Color.WHITE);
+                    gd.setCornerRadius(8);
+                    gd.setStroke(3, Color.BLACK);
+                    cv.setBackground(gd);
                 }
             });
             cv.setOnLongClickListener(new OnLongClickListener() {
@@ -86,7 +79,6 @@ public class Hand extends ImprovedViewGroup {
         }
 
     }
-
     public void redealHand()
     {
         for (int i=0; i<this.getChildCount();i++){
@@ -98,6 +90,17 @@ public class Hand extends ImprovedViewGroup {
             cv.setCard(newCard);
             this.currentCards.set(i,newCard);
         }
+    }
+    public void deselectAll()
+    {
+        for (int i=0; i<this.getChildCount();i++){
+            CardVisualization cv = (CardVisualization)this.getChildAt(i);
+            cv.hold = false;
+            GradientDrawable gd = (GradientDrawable)cv.getBackground();
+            gd.setColor(Color.WHITE);
+            cv.setBackground(gd);
+        }
+
     }
     public ArrayList<Card> getCurrentCards(){
         return currentCards;
