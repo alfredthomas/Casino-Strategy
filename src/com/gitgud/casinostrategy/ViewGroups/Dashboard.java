@@ -22,7 +22,7 @@ public class Dashboard extends ImprovedViewGroup {
     Button dealButton;
     Hand hand;
     Button shuffleButton;
-    public Dashboard (Context context,Shoe shoe,int handSize){
+    public Dashboard (Context context,final Shoe shoe,int handSize){
         super(context);
         this.shoe = shoe;
         this.handSize=handSize;

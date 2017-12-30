@@ -25,7 +25,7 @@ public class Hand extends ImprovedViewGroup {
         this.shoe = shoe;
         this.currentCards = new ArrayList<>(handSize);
         for (int i = 0; i<handSize; i++){
-            CardVisualization cv = new CardVisualization(context);
+            final CardVisualization cv = new CardVisualization(context);
             Card newCard = shoe.DealCard();
             cv.setCard(newCard);
             cv.setOnClickListener(new View.OnClickListener() {
