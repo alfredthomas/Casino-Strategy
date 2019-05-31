@@ -5,6 +5,9 @@ import com.gitgud.casinostrategy.Cards.Deck;
 import com.gitgud.casinostrategy.ViewGroups.Hand;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by alfredthomas on 12/11/15.
@@ -142,6 +145,10 @@ public class PokerBase {
         }
         return false;
     }
+    public static Deck.Rank whichPair(ArrayList<Card> cards)
+    {
+        return Deck.Rank.Joker;
+    }
     public static boolean containsAce(ArrayList<Card>[] sortedCards)
     {
         if(sortedCards[0].size()>0)
@@ -181,6 +188,20 @@ public class PokerBase {
             }
         }
         return sortedHand;
+    }
+    private static void sortByRank(ArrayList<Card> cards)
+    {
+        Collections.sort(cards, new Comparator<Card>() {
+            @Override
+            public int compare(Card card, Card t1) {
+                if(card.getRank().ordinal()<t1.getRank().ordinal())
+                    return -1;
+                else if (card.getRank().ordinal()>t1.getRank().ordinal())
+                    return 1;
+                else
+                    return 0;
+            }
+        });
     }
     private static ArrayList<Deck.Rank> getCardRanks(ArrayList<Card> cards){
         ArrayList<Deck.Rank> cardRanks = new ArrayList<>(cards.size());
